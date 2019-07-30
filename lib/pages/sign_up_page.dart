@@ -2,12 +2,19 @@ import 'package:flutter/material.dart';
 
 class SignUpPage extends StatefulWidget {
   SignUpPage({Key key}) : super(key: key);
-
   _SignUpPageState createState() => _SignUpPageState();
 }
 
 class _SignUpPageState extends State<SignUpPage> {
-  @override
+  PageController pageController;
+  String titulo = "Sign up";
+  String opt = "I have an account";
+
+  void initState() { 
+    super.initState();
+    pageController = PageController(initialPage: 0,viewportFraction: 1);
+
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,11 +38,12 @@ class _SignUpPageState extends State<SignUpPage> {
         new Container(
         padding: EdgeInsets.only(top: 60.0, left: 20.0, right: 20.0, bottom: 20.0),
         child: new Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
              
-              Text("Sign up", textAlign: TextAlign.left, style: 
+              Text('$titulo', textAlign: TextAlign.left,
+               style: 
              TextStyle(
                color: Colors.white,
                fontSize: 25.0,
@@ -43,17 +51,50 @@ class _SignUpPageState extends State<SignUpPage> {
                
              ),
              ),
-              Expanded(child: Container(),), //hace que se quede fijo abajo el card login
+             Expanded(child: Container(),), //hace que se quede fijo abajo el card login
 
-              cardLogin(),
-            
+             Container(
+               padding: EdgeInsets.only(top: 10.0),
+               width: double.infinity,
+               height: 400.0,
+               child: PageView(
+                 physics:new NeverScrollableScrollPhysics(),
+                 controller: pageController,
+                 scrollDirection: Axis.horizontal,
 
-              Text("I have an account", textAlign: TextAlign.left, style: 
+                 children: <Widget>[
+
+                   Container(child: cardSignUp(), ),
+                   Container(child: cardLogIn(), ),
+
+
+                 ],
+                 
+               )
+             ),
+
+              FlatButton(child: Text('$opt', textAlign: TextAlign.left, style: 
              TextStyle(
                color: Colors.white,
                fontSize: 15.0,
                fontWeight: FontWeight.normal,)),
-             
+               onPressed: () {
+                
+                 setState(() {
+                   if(titulo.contains('Sign up')){
+                     titulo='Sign in';
+                     opt='Create an account';
+                     pageController.nextPage(duration: Duration(milliseconds: 150), curve: Curves.bounceIn);
+                   } else {
+                     titulo='Sign up';
+                     opt='I have an account';
+                     pageController.previousPage(duration: Duration(milliseconds: 150), curve: Curves.bounceIn);
+                   }
+                   
+                 });
+               },
+             ),
+                
           ],
         )
         )
@@ -63,7 +104,7 @@ class _SignUpPageState extends State<SignUpPage> {
     );
   }
 
-  Widget cardLogin() {
+  Widget cardSignUp() {
   
     return SingleChildScrollView(
       child: 
@@ -108,25 +149,52 @@ class _SignUpPageState extends State<SignUpPage> {
              labelText: 'Email',
              icon: Icon(Icons.email),
              ))
-             
-             
-             
-             
              ],
-              
-             
-
+             )
             )
-            )
-            
           ],
-          
-    
       ),)
     );
     
-
-
   
   }
+
+Widget cardLogIn () {
+  
+    return SingleChildScrollView(
+      child: 
+         Card(
+      elevation: 10.0,
+      margin: EdgeInsets.only(bottom: 50.0, top: 70.0),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
+      child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
+            Padding(
+              padding: EdgeInsets.only(left: 15.0, top: 10.0, right: 25.0, bottom: 15.0),
+              child: Column(
+                children: <Widget>[
+              
+
+            TextField(
+             keyboardType: TextInputType.number,
+             decoration: InputDecoration(
+               border: InputBorder.none,
+             hintText: 'Input your phone number',
+             labelText: 'Phone',
+             icon: Icon(Icons.phone_android),
+             
+             )),
+
+             ],
+              
+            )
+            )
+          ],
+          
+      ),)
+    );
+}
+
+
 }
