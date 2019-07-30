@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lndlly_alpha/pages/sign_up_page.dart';
 import 'package:lndlly_alpha/utils/colors_util.dart';
 
 class SliderPage extends StatelessWidget {
@@ -17,7 +18,7 @@ final controller = PageController(
                 Container(
                   color: HexColor("8adbdc"),
                   padding: EdgeInsets.only(top: 50.0, left: 20.0, right: 20.0, bottom: 20.0),
-                  child: slide1(controller)
+                  child: slide1(controller, context)
                 ),
                   Container(
                   color: HexColor("fad08c"),
@@ -32,7 +33,7 @@ final controller = PageController(
                   Container(
                   color: HexColor("323e48"),
                     padding: EdgeInsets.only(top: 50.0, left: 20.0, right: 20.0, bottom: 20.0),
-                  child: slide4(controller)
+                  child: slide4(controller, context)
                 ),
 
 
@@ -41,7 +42,7 @@ final controller = PageController(
     );
   }
 
-  Widget slide1(PageController controller) {
+  Widget slide1(PageController controller, BuildContext context) {
 
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -87,7 +88,10 @@ final controller = PageController(
                 padding: EdgeInsets.all(8),
                 child: Text("Skip"),
 
-                onPressed: (){},
+                onPressed: (){Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => SignUpPage()),
+            );},
                ),
 
                Row(
@@ -411,7 +415,7 @@ final controller = PageController(
 
   }
 
-    Widget slide4(PageController controller) {
+    Widget slide4(PageController controller, BuildContext context) {
 
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -512,8 +516,8 @@ final controller = PageController(
                 padding: EdgeInsets.all(8),
                 child: Text("Finish"),
 
-                onPressed: (){
-              
+                onPressed: (){Navigator.push(context, 
+              MaterialPageRoute(builder: (context) => SignUpPage()));
                 },
                ),
 
