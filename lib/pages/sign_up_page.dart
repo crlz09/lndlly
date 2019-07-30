@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lndlly_alpha/pages/user_val_page.dart';
 
 class SignUpPage extends StatefulWidget {
   SignUpPage({Key key}) : super(key: key);
@@ -21,7 +22,12 @@ class _SignUpPageState extends State<SignUpPage> {
         floatingActionButton: new FloatingActionButton(
           backgroundColor: Colors.purple,
           child: Icon(Icons.navigate_next),  
-          onPressed: (){},
+          onPressed: (){
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => ValidationPage()),
+            );
+          },
  ),
         
 
@@ -54,9 +60,9 @@ class _SignUpPageState extends State<SignUpPage> {
              Expanded(child: Container(),), //hace que se quede fijo abajo el card login
 
              Container(
-               padding: EdgeInsets.only(top: 10.0),
+               padding: EdgeInsets.only(top: 15.0),
                width: double.infinity,
-               height: 400.0,
+               height: 350.0,
                child: PageView(
                  physics:new NeverScrollableScrollPhysics(),
                  controller: pageController,
@@ -176,12 +182,14 @@ Widget cardLogIn () {
                 children: <Widget>[
               
 
-            TextField(
+
+             TextField(
              keyboardType: TextInputType.number,
              decoration: InputDecoration(
                border: InputBorder.none,
              hintText: 'Input your phone number',
              labelText: 'Phone',
+             prefix: Text('+1'),
              icon: Icon(Icons.phone_android),
              
              )),
