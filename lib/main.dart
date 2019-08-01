@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lndlly_alpha/pages/location_selector_page.dart';
 import 'package:lndlly_alpha/pages/splash_page.dart';
 
 
@@ -11,7 +12,7 @@ class MyApp extends StatelessWidget {
     
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: SplashPage(), //aqui coloco la principal
+      home: LocationPage(), //aqui coloco la principal
       
     );
   }
