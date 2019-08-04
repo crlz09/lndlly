@@ -45,7 +45,10 @@ class _LocationPageState extends State<LocationPage> {
 
 
         
-         )]  ));
+         )
+         ]
+           )
+           );
   }
 
 

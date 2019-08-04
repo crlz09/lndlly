@@ -144,8 +144,8 @@ final controller = PageController(
                 onPressed: (){
                   controller.animateToPage(
                     1,
-                    duration: Duration(milliseconds: 100) 
-                    ,curve: Curves.linear);
+                    duration: Duration(milliseconds: 100),
+                    curve: Curves.linear);
                 },
                ),
 
