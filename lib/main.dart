@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       //home: SplashPage(), //aqui coloco la principal
-      home: MainPage(), //aqui coloco la principal
+      home: SplashPage(), //aqui coloco la principal
       
     );
   }

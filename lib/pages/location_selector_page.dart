@@ -97,6 +97,7 @@ class _LocationPageState extends State<LocationPage> {
                  padding: const EdgeInsets.all(8.0),
                  child: FlatButton(color: Colors.transparent,
                  textColor: Colors.black,
+                 onPressed: (){},
                  child: Column(
                    children: <Widget>[
                     
